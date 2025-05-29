@@ -51,22 +51,86 @@ Design a database for patient management, appointments, medical records, and bil
 University / Hospital (choose one)
 
 ## ER Diagram:
-![ER Diagram](er_diagram.png)
+![image](https://github.com/user-attachments/assets/cd4c167b-c1e0-4f04-abfc-f69536923028)
+
 
 ## Entities and Attributes:
-- Entity1: Attributes
-- Entity2: Attributes
-...
+Doctors
 
+Attributes: Name, Address, Specialization, Qualification
+
+Patients
+
+Attributes: Disease Type, Details
+
+Pharmacy
+
+Attributes: Medicines
+
+Tests
+
+Attributes: Type, Description
+
+Log
+
+Attributes: Report, Date
+
+Prescriptions, Treatment, Management, Records
+
+No attributes shown in the diagram
 ## Relationships and Constraints:
-- Relationship1 (Cardinality, Participation)
-- Relationship2 (Cardinality, Participation)
-...
 
+# Relationships:
+Doctors treat Patients (1-to-many)
+
+Doctors give Prescriptions (1-to-many)
+
+Patients receive Treatment (1-to-many)
+
+Patients have Logs (1-to-many)
+
+Logs include Tests (1-to-many)
+
+Pharmacy supplies Medicines (1-to-many)
+
+Pharmacy links with Doctors and Patients (many-to-many)
+
+Management maintains Records (1-to-many)
+
+Doctors are managed by Management (many-to-one)
+
+# Constraints:
+A doctor can treat many patients, but each patient has one doctor.
+
+Each patient can have multiple logs and treatments.
+
+Logs must have at least one test.
+
+Pharmacy can serve both doctors and patients.
+
+Each entity should have a unique ID (implied).
 ## Extension (Prerequisite / Billing):
-- Explain how you modeled prerequisites or billing.
+
+# Prerequisite
+
+Attributes: RequirementType, Description
+
+Linked to: Tests, Treatment
+
+Purpose: Defines necessary steps before tests or treatment (e.g., fasting, consent)
+
+# Billing
+
+Attributes: BillID, Amount, PaymentStatus, Date
+
+Linked to: Patients, Treatment, Pharmacy
+
+Purpose: Tracks costs for treatments, medicines, and services
+
+
 
 ## Design Choices:
-Brief explanation of why you chose certain entities, relationships, and assumptions
+The design includes core entities such as Doctors, Patients, Pharmacy, Treatment, Tests, and Prescriptions to represent essential healthcare processes. Logs and Records are used to separately track patient interactions and hospital documentation. The addition of Prerequisite ensures that necessary conditions (e.g., fasting, consent) are met before tests or treatments. Billing is included to manage payments related to treatments and medicines. Relationships are defined to show how doctors treat patients, prescribe medication, and are managed by the hospital. Patients undergo treatments, tests, and have activity logs. The pharmacy interacts with both doctors and patients. Billing is linked to services received. Key assumptions include one doctor treating a patient at a time, all procedures having possible prerequisites, and each service generating a billing record.
 
 ## RESULT
+Thus, the ER diagram for hospital management has been executed successfully.
